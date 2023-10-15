@@ -75,8 +75,16 @@ class ProductController extends Controller
             $request->picture->move(public_path('pics'), $fileName);
             $request->merge(['file_name' => $fileName]);
         }
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'price' => 'required|integer|between:0,10000',
+            'product_code' => 'required|max:255',
+            'description' => 'required|max:255',
+            'file_name' => 'required|max:255',
+        ]);
         $product = Product::findOrFail($id);
-        $product->update($request->all());
+        // $product->update($request->all());
+        $product->update($validateData);
         return redirect()->route('product.index')->with('success', 'product updated successfully');
     }
 
