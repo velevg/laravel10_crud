@@ -10,7 +10,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="d-flex justify-content-center align-items-center min-vh-100">
     <div class="container">
         <div class="card">
             <div class="card-header">Register</div>
@@ -22,19 +22,19 @@
                 @endif
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
-                    <div class="d-flex">
+                    <div class="mb-3">
                         <label for="name">Name</label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
-                    <div class="d-flex">
+                    <div class="mb-3">
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control" required>
                     </div>
-                    <div class="d-flex">
+                    <div class="mb-3">
                         <label for="password">Password</label>
                         <input type="password" name="password" class="form-control" required>
                     </div>
-                    <div class="d-flex justify-content-end">
+                    <div class="mb-3 d-flex justify-content-end">
                         <button type="submit" class="btn btn-success">Register</button>
                     </div>
                 </form>

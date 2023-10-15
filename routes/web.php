@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('index');
     });
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::resource('/product', ProductController::class);
 });
