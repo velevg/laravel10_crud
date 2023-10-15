@@ -15,6 +15,8 @@
         <thead class="table-primary">
             <tr>
                 <th>#</th>
+                <th>File Name</th>
+                <th>Image</th>
                 <th>Title</th>
                 <th>Price</th>
                 <th>Product Code</th>
@@ -27,6 +29,9 @@
                 @foreach ($product as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
+                        <td class="align-middle">{{ $rs->file_name }}</td>
+                        <td class="align-middle"><img src="{{ asset('pics/' . $rs->file_name) }}" alt=""
+                                width="32" height="32"></td>
                         <td class="align-middle">{{ $rs->title }}</td>
                         <td class="align-middle">{{ $rs->price }}</td>
                         <td class="align-middle">{{ $rs->product_code }}</td>
@@ -37,7 +42,8 @@
                                     class="btn btn-secondary">Detail</a>
                                 <a href="{{ route('product.edit', $rs->id) }}" type="button"
                                     class="btn btn-warning">Edit</a>
-                                <form action="{{ route('product.destroy', $rs->id) }}" method="POST" class="btn btn-sm btn-danger p-0" type="button" onsubmit="return confirm('Delete?')">
+                                <form action="{{ route('product.destroy', $rs->id) }}" method="POST"
+                                    class="btn btn-sm btn-danger p-0" type="button" onsubmit="return confirm('Delete?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger-sm">Delete</button>

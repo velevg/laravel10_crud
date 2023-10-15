@@ -12,6 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $product = Product::all();
+        $product = Product::paginate(15);
         $product = Product::orderBy('created_at', 'DESC')->get();
         return view('product.index', compact('product'));
     }
@@ -29,6 +31,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('picture')) {
+            $fileName = time() . '.' . $request->picture->getClientOriginalExtension();
+            $request->picture->move(public_path('pics'), $fileName);
+            $request->merge(['file_name' => $fileName]);
+        }
         Product::create($request->all());
         return redirect()->route('product.index')->with('success', 'Product added successfully');
     }

@@ -3,7 +3,7 @@
 @section('body')
     <h1 class="mb-0">Add Book</h1>
     <hr />
-    <form action="{{ route('product.store') }}" method="POST">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
             <div class="col">
@@ -22,7 +22,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="d-grid">
+            <div class="col d-flex">
+                <input type="file" name="picture" class="form-control">
                 <button class="btn btn-primary">Submit</button>
             </div>
         </div>
