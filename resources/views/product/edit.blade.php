@@ -4,7 +4,7 @@
 @section('body')
     <h1 class="mb-0">Edit Product</h1>
     <hr />
-    <form action="{{ route('product.update', $product->id) }}" method="POST">
+    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
@@ -28,7 +28,10 @@
             </div>
         </div>
         <div class="row">
-            <button class="btn btn-warning" type="submit">Update</button>
+            <div class="col d-flex">
+                <input type="file" name="picture" class="form-control">
+                <button class="btn btn-warning" type="submit">Update</button>
+            </div>
         </div>
     </form>
 @endsection
